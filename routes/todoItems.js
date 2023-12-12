@@ -4,7 +4,10 @@ const todoItemsModel = require("../models/todoItems");
 
 router.post("/api/item", async (req, res) => {
   try {
-    // console.log("route");
+    if (!itemText.trim()) {
+      alert("Item cannot be empty");
+      return;
+    }
     const newItem = new todoItemsModel({
       item: req.body.item,
     });
