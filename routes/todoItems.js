@@ -6,8 +6,8 @@ router.post("/api/item", async (req, res) => {
   try {
     if (!req.body.item || req.body.item.trim() === "") {
       // return res.status(400).json({ error: "Item cannot be empty" });
-      alert("Item cannot be empty");
-      return;
+
+      return alert("Item cannot be empty");
     }
     const newItem = new todoItemsModel({
       item: req.body.item,
