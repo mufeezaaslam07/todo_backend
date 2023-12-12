@@ -29,6 +29,9 @@ router.get("/api/items", async (req, res) => {
 
 router.put("/api/item/:id", async (req, res) => {
   try {
+    if (!req.body.item || req.body.item.trim() === "") {
+      return res.status(400).json("Item cannot be empty");
+    }
     const updateItem = await todoItemsModel.findByIdAndUpdate(req.params.id, {
       $set: req.body,
     });
